@@ -4,6 +4,9 @@ on:
   pull_request:
     paths:
       - 'submission/**'
+  pull_request_target:
+    paths:
+      - 'submission/**'
 
 jobs:
   verify:
@@ -12,6 +15,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
 
     - name: Set up Python
       uses: actions/setup-python@v4
