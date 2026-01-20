@@ -1,7 +1,6 @@
 import hashlib
 import secrets
 import json
-from ecdsa.util import sigencode_der
 from ecdsa import SigningKey, SECP256k1
 
 private_key_bytes = secrets.token_bytes(32)
@@ -16,7 +15,6 @@ message = f"SOB-2026-{GITHUB_HANDLE}".encode()
 signature = pvt_key.sign(
     message,
     hashfunc=hashlib.sha256,
-    sigencode=sigencode_der
 )
 
 
